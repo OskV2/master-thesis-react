@@ -1,14 +1,14 @@
-import { useVisualizationStore } from "@/stores/visualizationStore";
+import { useVisualizationStore } from '@/stores/visualizationStore';
 import {
   Play,
   Pause,
-  SkipBack,
-  SkipForward,
+  ChevronsLeft,
+  ChevronsRight,
   RotateCcw,
   Gauge,
-} from "lucide-react";
+} from 'lucide-react';
 
-const SPEED_OPTIONS = [0.5, 1, 2, 4];
+const SPEED_OPTIONS = [1000, 500, 200, 50];
 
 export default function PlaybackControls() {
   const {
@@ -32,8 +32,9 @@ export default function PlaybackControls() {
       {/* Progress bar */}
       <div className="space-y-1.5">
         <div className="flex justify-between text-xs font-display text-slate-500">
-          <span>Krok {currentStep + 1}</span>
-          <span>z {totalSteps}</span>
+          <span>
+            Krok {currentStep + 1} z {totalSteps}
+          </span>
         </div>
         <input
           type="range"
@@ -47,56 +48,60 @@ export default function PlaybackControls() {
 
       {/* Controls row */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
           <button
             onClick={reset}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors"
+            disabled={currentStep === 0}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm bg-surface-lighter text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
             title="Resetuj"
           >
             <RotateCcw size={18} />
+            Reset
           </button>
 
           <button
             onClick={stepBackward}
-            disabled={currentStep === 0}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            disabled={currentStep === 0 || isPlaying}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm bg-surface-lighter text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
             title="Poprzedni krok"
           >
-            <SkipBack size={18} />
+            <ChevronsLeft size={18} />
+            Poprzedni
           </button>
 
           <button
             onClick={isPlaying ? pause : play}
-            className="p-3 rounded-xl bg-primary-600 text-white hover:bg-primary-500 transition-colors"
-            title={isPlaying ? "Pauza" : "Odtwarzaj"}
+            disabled={currentStep >= totalSteps - 1 && !isPlaying}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm bg-primary-600 text-white hover:bg-primary-500 disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+            {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+            {isPlaying ? 'Pauza' : 'Play'}
           </button>
 
           <button
             onClick={stepForward}
-            disabled={currentStep >= totalSteps - 1}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-surface-lighter transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-            title="Następny krok"
+            disabled={currentStep >= totalSteps - 1 || isPlaying}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm bg-surface-lighter text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            <SkipForward size={18} />
+            Następny
+            <ChevronsRight size={18} />
           </button>
         </div>
 
         {/* Speed selector */}
-        <div className="flex items-center gap-1.5">
-          <Gauge size={14} className="text-slate-500" />
-          {SPEED_OPTIONS.map((s) => (
+        <div className="flex items-center gap-1 ml-auto">
+          <span className="text-xs text-slate-500">Prędkość:</span>
+          {SPEED_OPTIONS.map((ms) => (
             <button
-              key={s}
-              onClick={() => setSpeed(s)}
-              className={`px-2 py-1 rounded text-xs font-display transition-colors ${
-                speed === s
-                  ? "bg-primary-600/20 text-primary-400 border border-primary-500/30"
-                  : "text-slate-500 hover:text-slate-300"
+              key={ms}
+              onClick={() => setSpeed(ms)}
+              className={`px-2 py-1 rounded text-xs font-display ${
+                speed === ms
+                  ? 'bg-primary-600/20 text-primary-400 border border-primary-500/30'
+                  : 'text-slate-500 hover:text-slate-300'
               }`}
             >
-              {s}x
+              {ms >= 1000 ? `${ms / 1000}s` : `${ms}ms`}
             </button>
           ))}
         </div>

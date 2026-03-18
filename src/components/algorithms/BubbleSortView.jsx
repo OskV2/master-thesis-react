@@ -79,7 +79,7 @@ export default function BubbleSortView() {
             steps={steps}
             currentStep={currentStep}
             onStepClick={goToStep}
-            height={300}
+            height={450}
           />
         </div>
 
@@ -90,78 +90,16 @@ export default function BubbleSortView() {
               array={step.array}
               comparing={step.comparing}
               sorted={Array.isArray(step.sorted) ? step.sorted : [...step.sorted]}
-              height={300}
+              height={450}
             />
           ) : (
             <SortingBarsCanvas
               array={step.array}
               comparing={step.comparing}
               sorted={Array.isArray(step.sorted) ? step.sorted : [...step.sorted]}
-              height={300}
+              height={450}
             />
           )}
-        </div>
-      </div>
-
-      {/* Opis kroku */}
-      <p className="mt-3 text-sm text-slate-400 font-display min-h-[40px]">
-        {step.description}
-      </p>
-
-      {/* Kontrolki */}
-      <div className="mt-3 flex items-center gap-3 flex-wrap">
-        <button
-          onClick={reset}
-          disabled={currentStep === 0}
-          className="px-3 py-1.5 rounded-lg text-sm bg-surface-lighter text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          Reset
-        </button>
-
-        <button
-          onClick={stepBackward}
-          disabled={currentStep === 0 || isPlaying}
-          className="px-3 py-1.5 rounded-lg text-sm bg-surface-lighter text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          ← Poprzedni
-        </button>
-
-        <button
-          onClick={togglePlay}
-          disabled={currentStep >= totalSteps - 1 && !isPlaying}
-          className="px-4 py-1.5 rounded-lg text-sm bg-primary-600 text-white hover:bg-primary-500 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          {isPlaying ? "⏸ Pauza" : "▶ Play"}
-        </button>
-
-        <button
-          onClick={stepForward}
-          disabled={currentStep >= totalSteps - 1 || isPlaying}
-          className="px-3 py-1.5 rounded-lg text-sm bg-surface-lighter text-slate-300 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          Następny →
-        </button>
-
-        <span className="text-xs text-slate-500 font-display">
-          {currentStep + 1} / {totalSteps}
-        </span>
-
-        {/* Speed selector */}
-        <div className="flex items-center gap-1 ml-auto">
-          <span className="text-xs text-slate-500">Prędkość:</span>
-          {[1000, 500, 200, 50].map((ms) => (
-            <button
-              key={ms}
-              onClick={() => setSpeed(ms)}
-              className={`px-2 py-1 rounded text-xs font-display ${
-                speed === ms
-                  ? "bg-primary-600/20 text-primary-400 border border-primary-500/30"
-                  : "text-slate-500 hover:text-slate-300"
-              }`}
-            >
-              {ms >= 1000 ? `${ms / 1000}s` : `${ms}ms`}
-            </button>
-          ))}
         </div>
       </div>
     </div>

@@ -50,7 +50,7 @@ export default function StepList({
     if (activeRef.current && listRef.current) {
       activeRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "nearest",
+        block: "center",
       });
     }
   }, [currentStep]);
