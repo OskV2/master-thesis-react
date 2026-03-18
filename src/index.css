@@ -25,3 +25,9 @@
     @apply bg-surface text-slate-100 font-body antialiased;
   }
 }
+
+/* Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #52525b transparent;
+}
