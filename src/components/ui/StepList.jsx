@@ -17,6 +17,14 @@ const TYPE_COLORS = {
   swap: "bg-red-500",
   sorted: "bg-emerald-500",
   done: "bg-emerald-400",
+  // Quicksort
+  pivot: "bg-purple-500",
+  partition: "bg-indigo-500",
+  // Merge sort
+  split: "bg-cyan-500",
+  "merge-start": "bg-blue-500",
+  merge: "bg-blue-400",
+  merged: "bg-teal-500",
 };
 
 function getBadgeColor(type) {
@@ -30,6 +38,14 @@ const TYPE_LABELS = {
   swap: "Zamiana",
   sorted: "Posortowany",
   done: "Koniec",
+  // Quicksort
+  pivot: "Pivot",
+  partition: "Partycja",
+  // Merge sort
+  split: "Podział",
+  "merge-start": "Scalanie",
+  merge: "Scalanie",
+  merged: "Scalono",
 };
 
 function getBadgeLabel(type) {

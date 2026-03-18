@@ -5,6 +5,8 @@ import PlaybackControls from "@/components/ui/PlaybackControls";
 import RenderModeToggle from "@/components/ui/RenderModeToggle";
 import { ArrowLeft, Info } from "lucide-react";
 import BubbleSortView from "@/components/algorithms/BubbleSortView";
+import QuickSortView from "@/components/algorithms/QuickSortView";
+import MergeSortView from "@/components/algorithms/MergeSortView";
 
 /**
  * Placeholder visualization component.
@@ -85,9 +87,10 @@ export default function AlgorithmPage() {
       </div>
 
       {/* Visualization area */}
-      {algorithm.slug === "bubble-sort" ? (
-        <BubbleSortView />
-      ) : (
+      {algorithm.slug === "bubble-sort" && <BubbleSortView />}
+      {algorithm.slug === "quicksort" && <QuickSortView />}
+      {algorithm.slug === "merge-sort" && <MergeSortView />}
+      {!["bubble-sort", "quicksort", "merge-sort"].includes(algorithm.slug) && (
         <VisualizationPlaceholder algorithm={algorithm} />
       )}
 
