@@ -7,6 +7,8 @@ import { ArrowLeft, Info } from "lucide-react";
 import BubbleSortView from "@/components/algorithms/BubbleSortView";
 import QuickSortView from "@/components/algorithms/QuickSortView";
 import MergeSortView from "@/components/algorithms/MergeSortView";
+import KmpView from "@/components/algorithms/KmpView";
+import BstView from "@/components/algorithms/BstView";
 
 /**
  * Placeholder visualization component.
@@ -90,9 +92,8 @@ export default function AlgorithmPage() {
       {algorithm.slug === "bubble-sort" && <BubbleSortView />}
       {algorithm.slug === "quicksort" && <QuickSortView />}
       {algorithm.slug === "merge-sort" && <MergeSortView />}
-      {!["bubble-sort", "quicksort", "merge-sort"].includes(algorithm.slug) && (
-        <VisualizationPlaceholder algorithm={algorithm} />
-      )}
+      {algorithm.slug === "kmp" && <KmpView />}
+      {algorithm.slug === "bst" && <BstView />}
 
       {/* Playback controls */}
       <div className="mt-4">

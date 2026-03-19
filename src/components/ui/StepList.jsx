@@ -25,6 +25,27 @@ const TYPE_COLORS = {
   "merge-start": "bg-blue-500",
   merge: "bg-blue-400",
   merged: "bg-teal-500",
+  // KMP
+  "lps-start": "bg-slate-500",
+  "lps-compare": "bg-amber-500",
+  "lps-match": "bg-emerald-500",
+  "lps-fallback": "bg-orange-500",
+  "lps-set": "bg-slate-400",
+  "lps-done": "bg-emerald-400",
+  "search-start": "bg-slate-500",
+  "search-compare": "bg-amber-500",
+  "search-match": "bg-emerald-500",
+  "search-mismatch": "bg-red-500",
+  "search-found": "bg-emerald-400",
+  "search-done": "bg-emerald-400",
+  // BST
+  "insert-compare": "bg-amber-500",
+  "insert-place": "bg-emerald-500",
+  "search-not-found": "bg-red-400",
+  "delete-find": "bg-amber-500",
+  "delete-case": "bg-orange-500",
+  "delete-done": "bg-emerald-400",
+  "traverse-visit": "bg-indigo-500",
 };
 
 function getBadgeColor(type) {
@@ -46,6 +67,27 @@ const TYPE_LABELS = {
   "merge-start": "Scalanie",
   merge: "Scalanie",
   merged: "Scalono",
+  // KMP
+  "lps-start": "Start LPS",
+  "lps-compare": "LPS porówn.",
+  "lps-match": "LPS zgodność",
+  "lps-fallback": "LPS cofnięcie",
+  "lps-set": "LPS ustaw",
+  "lps-done": "LPS gotowa",
+  "search-start": "Start szuk.",
+  "search-compare": "Porównanie",
+  "search-match": "Zgodność",
+  "search-mismatch": "Niezgodność",
+  "search-found": "Znaleziono!",
+  "search-done": "Koniec szuk.",
+  // BST
+  "insert-compare": "Porównanie",
+  "insert-place": "Wstawiono",
+  "search-not-found": "Nie znaleziono",
+  "delete-find": "Szukanie",
+  "delete-case": "Usuwanie",
+  "delete-done": "Usunięto",
+  "traverse-visit": "Odwiedzono",
 };
 
 function getBadgeLabel(type) {
