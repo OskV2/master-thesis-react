@@ -49,6 +49,8 @@ export const useQuizStore = create((set, get) => ({
     }
   },
 
+  goToQuestion: (index) => set({ currentQuestionIndex: index }),
+
   finishQuiz: () => {
     const { questions, answers } = get();
     let correct = 0;

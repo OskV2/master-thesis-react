@@ -1,0 +1,23 @@
+[
+  {
+    "id": "q-bubble-1",
+    "algorithmId": "bubble-sort",
+    "question": "Jaka jest złożoność czasowa bubble sort w najgorszym przypadku?",
+    "options": ["O(n)", "O(n log n)", "O(n²)", "O(log n)"],
+    "correctAnswer": "O(n²)"
+  },
+  {
+    "id": "q-quick-1",
+    "algorithmId": "quicksort",
+    "question": "Jaka jest złożoność czasowa quicksort w przypadku średnim?",
+    "options": ["O(n²)", "O(n log n)", "O(n)", "O(log n)"],
+    "correctAnswer": "O(n log n)"
+  },
+  {
+    "id": "q-merge-1",
+    "algorithmId": "merge-sort",
+    "question": "Jaka jest złożoność pamięciowa merge sort?",
+    "options": ["O(1)", "O(log n)", "O(n)", "O(n log n)"],
+    "correctAnswer": "O(n)"
+  }
+]
