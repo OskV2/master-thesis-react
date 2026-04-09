@@ -103,14 +103,15 @@ export default function StepList({
   const listRef = useRef(null);
   const activeRef = useRef(null);
 
-  // Auto-scroll to keep active step visible
+  // Auto-scroll to keep active step visible within the container (not the whole page)
   useEffect(() => {
-    if (activeRef.current && listRef.current) {
-      activeRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    }
+    const container = listRef.current;
+    const item = activeRef.current;
+    if (!container || !item) return;
+
+    const itemTop = item.offsetTop - container.offsetTop;
+    const scrollTarget = itemTop - container.clientHeight / 2 + item.offsetHeight / 2;
+    container.scrollTo({ top: scrollTarget, behavior: "smooth" });
   }, [currentStep]);
 
   return (

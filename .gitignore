@@ -14,6 +14,8 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+CLAUDE.md
+.claude/
 
 # Editor / IDE
 .vscode/
