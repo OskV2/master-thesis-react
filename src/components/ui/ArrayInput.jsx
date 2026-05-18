@@ -14,8 +14,8 @@ import { useState } from "react";
 export default function ArrayInput({
   onSubmit,
   defaultSize = 10,
-  maxSize = 30,
-  maxValue = 99,
+  maxSize = 75,
+  maxValue = 200,
 }) {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
